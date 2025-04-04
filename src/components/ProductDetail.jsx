@@ -1,10 +1,10 @@
-import {useState} from "react";
+import { useState } from "react";
 import { useEffect } from "react";
 import AddToBasket from "./AddToBasket";
 import Review from "./Review";
 
-function ProductDetail({product}) {
-    const [qty, setQty] = useState(product.stock > 0 ? 1 : 0);
+function ProductDetail({ product }) {
+    const [qty, setQty] = useState(product && product.stock > 0 ? 1 : 0);
 
     useEffect(() => {
         window.scrollTo(0, 0); // 將頁面滾動到頂部
@@ -13,7 +13,7 @@ function ProductDetail({product}) {
     if (!product) {
         return <div>Product not found</div>;
     }
-    
+
     return (
         <div className="grid grid-cols-1 lg:grid-cols-24 gap-8">
             {/* 左側產品圖 */}
@@ -54,7 +54,7 @@ function ProductDetail({product}) {
                         >
                             {[...Array(product.stock).keys()].map((x) => (
                                 <option key={x + 1} value={x + 1}>
-                                {x + 1}
+                                    {x + 1}
                                 </option>
                             ))}
                         </select>
@@ -63,7 +63,7 @@ function ProductDetail({product}) {
                         <span className="font-bold">Total : </span>
                         {product.price * qty}
                     </p>
-                    <AddToBasket product={product} qty={qty}/>
+                    <AddToBasket product={product} qty={qty} />
                 </div>
             </div>
 
@@ -73,8 +73,8 @@ function ProductDetail({product}) {
                     Reviews
                 </h2>
                 <div className="flex flex-col gap-4">
-                    {product.reviews.map((product) => (
-                        <Review key={product.ID} review = {product} />
+                    {product.reviews.map((review) => (
+                        <Review key={review.ID} review={review} />
                     ))}
                 </div>
             </div>

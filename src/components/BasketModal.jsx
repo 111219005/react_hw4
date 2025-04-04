@@ -47,7 +47,7 @@ export default function BasketModal({ isOpen, toggleModal }) {
                                     }
                                     className="select select-bordered select-xs w-[3.5rem] px-2"
                                  >
-                                    {[...Array(item.stock).keys()].map((x) => (
+                                    {[...Array(item.stock ?? 0).keys()].map((x) => (
                                        <option key={x + 1} value={x + 1}>{x + 1}</option>
                                     ))}
                                  </select>
