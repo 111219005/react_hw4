@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { addCartItems } from "../redux/cartSlice";
+import { useState } from "react";
 
 export default function AddToBasket({ product, qty }) {
     const dispatch = useDispatch();

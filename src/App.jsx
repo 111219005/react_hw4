@@ -6,14 +6,14 @@ import './App.css'
 import Home from "./pages/Home"
 import Product from "./pages/Product"
 import Category from "./pages/Category"
-import store from './redux/store'
+import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react'
 
 function App() {
   return (
     <>
       <Provider store={store}>
-        <PersistGate loading={null} persistor={store.persistor}>
+        <PersistGate loading={null} persistor={persistor}>
           <HelmetProvider context={{}}>
             <BrowserRouter>
               <Routes>

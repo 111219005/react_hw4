@@ -8,14 +8,6 @@ import products from "../json/books_reviews.json";
 import { use } from "react";
 
 function Product() {
-    // const [searchParams] = useSearchParams();
-    // const [qty, setQty] = useState(1);
-
-    // useEffect(() => {
-    //     const qtyFromBasket = searchParams.get("qtyFromBasket");
-    //     const parsedQty = qtyFromBasket ? Number(qtyFromBasket) : (product.stock > 0 ? 1 : 0);
-    //     setQty(isNaN(parsedQty) || parsedQty < 0 ? 0 : parsedQty);
-    // }, [searchParams, product.stock]);
 
     const { productId } = useParams();
     const product = products.find((x) => x.ID === Number(productId));
@@ -37,3 +29,12 @@ function Product() {
 }
 
 export default Product;
+
+// const [searchParams] = useSearchParams();
+// const [qty, setQty] = useState(1);
+
+// useEffect(() => {
+//     const qtyFromBasket = searchParams.get("qtyFromBasket");
+//     const parsedQty = qtyFromBasket ? Number(qtyFromBasket) : (product.stock > 0 ? 1 : 0);
+//     setQty(isNaN(parsedQty) || parsedQty < 0 ? 0 : parsedQty);
+// }, [searchParams, product.stock]);

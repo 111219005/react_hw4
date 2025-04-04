@@ -63,7 +63,7 @@ function ProductDetail({product}) {
                         <span className="font-bold">Total : </span>
                         {product.price * qty}
                     </p>
-                    <AddToBasket/>
+                    <AddToBasket product={product} qty={qty}/>
                 </div>
             </div>
 

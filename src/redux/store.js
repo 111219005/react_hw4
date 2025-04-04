@@ -1,4 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'
 import cartReducer from "./cartSlice";
 
 const persistConfig = {
@@ -7,20 +9,19 @@ const persistConfig = {
 }
 
 const persistedCartReducer = persistReducer(persistConfig, cartReducer);
-const store = configureStore({
+export const store = configureStore({
     reducer: {
-        cart: cartReducer,
+        cart: persistedCartReducer,
     },
     devTools: process.env.NODE_ENV !== "production",
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             thunk: true,
             serializableCheck: {
-                // 如果用 redux-persist，需要忽略這些 action
                 ignoredActions: ['persist/PERSIST', 'persist/REHYDRATE'],
             },
         }
     ),
 });
 
-export default store;
+export const persistor = persistStore(store);
