@@ -1,0 +1,62 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@plugin "daisyui/theme"{
+  name: "mytheme";
+  default: true;
+  prefersdark: false;
+  color-scheme: light;
+  --color-primary: #777C76;
+  --color-base-100: #1f282b;
+}
+
+/* [data-theme='light']{
+  .footer-bg{
+    background-color: aliceblue;
+  }
+
+  .drawer-bg{
+    background-color: #fff;
+  }
+} */
+
+
+
+html,
+body{
+  font-size: 16px;
+  line-height: 1.6;
+  background-color: #1f282b;
+  color: white;
+}
+
+.main-layout{
+  display: grid;
+  min-height: 100vh;
+  grid-template-areas: 
+    'header'
+    'content'
+    'footer';
+  grid-template-rows: auto 1fr auto;
+  gap: 1rem;
+}
+
+.layout-header{
+  grid-area: header;
+  padding: 0;
+  height: auto !important;
+  line-height: 1.6;
+  background-color: #1f282b !important;
+}
+
+.layout-content{
+  grid-area: content;
+  background-color: #1f282b;
+}
+
+.layout-footer{
+  grid-area: footer;
+  padding: 0;
+  height: auto !important;
+  line-height: 1.6;
+  background-color: #1f282b !important;
+}
